@@ -12,4 +12,6 @@ exports.routesConfig = function (app) {
     AuthMiddleware.isPasswordsMatched,
     UserController.saveNewUser,
   ]);
+
+  app.get("/user/:id", [AuthMiddleware.validJWTNeeded, UserController.getUser]);
 };

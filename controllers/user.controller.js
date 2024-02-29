@@ -78,3 +78,13 @@ exports.saveNewUser = (req, res) => {
     }
   });
 };
+
+exports.getUser = (req, res) => {
+  db.user.find({ _id: req.params.id }).then((result) => {
+    if (result[0]) {
+      res.status(200).send({ status: true, data: result });
+    } else {
+      res.status(404).send({ status: false, data: "No user found" });
+    }
+  });
+};
